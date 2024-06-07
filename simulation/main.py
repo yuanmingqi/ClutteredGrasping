@@ -17,13 +17,14 @@ def user_control_demo():
     )
 
     # Define camera parameters
-    cam_pos = [0, -0.5, 0.5]
-    cam_tar = [0, 0, 0]
-    cam_up_vector = [0, 0, 1]
-    near = 0.2
-    far = 100
-    size = (640, 480)
-    fov = 60
+    # RealSense D415
+    cam_pos = (0, 0, 0.5)  # Camera position above the target
+    cam_tar = (0, 0, 0)    # Camera target directly below the camera position
+    cam_up_vector = (0, 1, 0)  # Up direction along the y-axis
+    near = 0.01
+    far = 10.0
+    size = (480, 640)
+    fov = 65.0
 
     # Create Camera instance
     camera = Camera(cam_pos, cam_tar, cam_up_vector, near, far, size, fov)
@@ -34,7 +35,7 @@ def user_control_demo():
     env.reset()
     # env.SIMULATION_STEP_DELAY = 0
     while True:
-        # obs, reward, done, info = env.step(env.read_debug_parameter(), 'end')
+        obs, reward, done, info = env.step(env.read_debug_params('joint'), 'joint')
         pass
         # print(obs, reward, done, info)
 

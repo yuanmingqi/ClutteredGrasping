@@ -228,8 +228,9 @@ class UR5Robotiq140(UR5Robotiq85):
     def __init_robot__(self):
         self.eef_id = 7
         self.arm_num_dofs = 6
-        self.arm_rest_poses = [-1.5690622952052096, -1.5446774605904932, 1.343946009733127, -1.3708613585093699,
-                               -1.5707970583733368, 0.0009377758247187636]
+        # self.arm_rest_poses = [-1.5690622952052096, -1.5446774605904932, 1.343946009733127, -1.3708613585093699,
+        #                        -1.5707970583733368, 0.0009377758247187636]
+        self.arm_rest_poses = np.array([0.5, -0.25, -0.6, -0.65, 0.5, 0]) * np.pi
         self.id = p.loadURDF('./urdf/ur5_robotiq_140.urdf', self.base_pos, self.base_ori,
                              useFixedBase=True, flags=p.URDF_ENABLE_CACHED_GRAPHICS_SHAPES)
         self.gripper_range = [0, 0.06]#[0, 0.085]
